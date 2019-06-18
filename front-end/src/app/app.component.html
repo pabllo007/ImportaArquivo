@@ -1,0 +1,35 @@
+<main id="app" class="app-grid">
+  <!-- Navbar area -->
+  <!-- Navbar -->
+  <div class="app-navbar">
+    <sc-navbar
+      titulo="Novo nome de Navbar"
+      logo="assets/images/logo-sisbr-v2.svg"
+      [user]="(user$ | async)"
+      [hasMultiInstituition]="false"
+      [items]="itemsNavbar"
+      (itemClick)="onItemClick($event)"
+    >
+    </sc-navbar>
+  </div>
+  <div class="app-toolbar">
+    <sc-toolbar
+      [itens]="itemsToolbar">
+    </sc-toolbar>
+  </div>
+  <!-- Problema no componente header -->
+  <header class="app-header">
+    <sc-header></sc-header>
+  </header>
+  <!-- Content area -->
+  <section class="app-content"
+    [class.grid-col-span-2]="(isClosed() | async)">
+    <router-outlet></router-outlet>
+    <div id="action-bar-container" class="hidden"></div>
+    <div id="alert-container"></div>
+  </section>
+  <aside class="app-sidebar" [hidden]="(isClosed() | async)">
+    <sc-sidebar-container #sidebar></sc-sidebar-container>
+  </aside>
+
+</main>
